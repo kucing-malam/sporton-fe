@@ -13,7 +13,7 @@ const HeroSection = () => {
           alt="Basketball icon"
         />
         <div className="relative ml-40 w-full">
-          <div className="text-primary italic">Friday Sale, 50%</div>
+          <div className="text-primary italic bg-primary/15 w-fit py-1.5 px-3 rounded-full">Friday Sale, 50%</div>
           <h1 className="font-extrabold text-[95px] italic leading-tight bg-gradient-to-b from-black to-[#CBCBCB] bg-clip-text text-transparent">WEAR YOUR <br /> TOP QUALITY <br /> SPORTSWEAR</h1>
           <p className="w-1/2 mt-10 leading-loose">
             Engineered for endurance and designed for speed. Experience gear 
