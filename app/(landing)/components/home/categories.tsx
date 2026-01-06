@@ -33,8 +33,8 @@ const categoryList = [
 const Categories = () => {
     return (
         <section id="categories-section" className="container mx-auto pb-20">
-            <div className="flex justify-between">
-                <h2 className="font-bold text-2x1">Browse By Categories</h2>
+            <div className="flex justify-between items-center mb-8">
+                <h2 className="font-bold text-2xl">Browse By Categories</h2>
                 <Link href="#" className="flex gap-2 text-primary font-medium">
                     See All Categories
                     <FiArrowRight className="self-center" />
@@ -49,7 +49,7 @@ const Categories = () => {
                                 src={`/images/categories/${category.imgUrl}`}
                                 width={86}
                                 height={86}
-                                alt={""} 
+                                alt={category.name} 
                                 className="mb-[10px]"
                             />
                             <div className="text-primary font-medium text-xl text-center">{category.name}</div>
