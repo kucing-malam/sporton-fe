@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/button"
 import { FiPlus } from "react-icons/fi";
+import PriceFormatter from '../../../utils/price-formatter';
 
 const ProductsSection = () => {
 
@@ -54,16 +55,16 @@ const ProductsSection = () => {
             price: 999000,
             imgUrl: 'product-2.png'
         },
-    ]
+    ];
 
     return (
-        <section id="product-section">
+        <section id="product-section" className="mb-52">
             <h2 className="font-bold italic text-4xl text-center mb-11">
                 <span className="text-primary">Our</span>{" "}<span>Product</span>
             </h2>
             <div className="grid grid-cols-4 container mx-auto">
                 {productList.map((product, index) => (
-                    <Link href="#" className="p-1.5 mb-8 bg-white hover:drop-shadow-xl duration-200" key={index}>
+                    <Link href={`/product/${product.name} `} className="p-1.5 mb-8 bg-white hover:drop-shadow-xl duration-200" key={index}>
                         <div className="relative bg-primary-light aspect-square w-full flex justify-center items-center">
                             <Image
                                 src={`/images/products/${product.imgUrl}`}
@@ -80,11 +81,7 @@ const ProductsSection = () => {
                                     {product.category}
                                 </div>
                                 <div className="text-primary font-medium">
-                                    {Intl.NumberFormat("id-ID", {
-                                        style: 'currency',
-                                        currency: 'IDR',
-                                        maximumSignificantDigits: 3
-                                    }).format(product.price)}
+                                    {PriceFormatter(product.price)}
                                 </div>
                             </div>
                     </Link>
@@ -92,7 +89,6 @@ const ProductsSection = () => {
             </div>
         </section>
     )
-
-}
+};
 
 export default ProductsSection;
