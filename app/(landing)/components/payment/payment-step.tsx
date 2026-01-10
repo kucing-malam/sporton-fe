@@ -34,7 +34,7 @@ const PaymentStep = () => {
                 <div className="border-t border-gray-200 p-4">
                     <div className="font-semibold flex justify-between">
                         <div className="font-sm">Total</div>
-                        <div className="text-primary total-xs">{PriceFormatter(455000)}</div>
+                        <div className="text-primary total-xs">{PriceFormatter(4340000)}</div>
                     </div>
                     <Button variant="dark" size="small" className="w-full mt-4" onClick={uploadAndConfirm}>
                         <FiCheckCircle /> Upload Receipt & Confirm 
