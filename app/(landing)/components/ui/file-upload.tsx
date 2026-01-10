@@ -49,7 +49,7 @@ const FileUpload = ({ onFileSelect }: TFileUploadProps) => {
                         <p className="text-gray-400 text-sm">{(file.size / 1024).toFixed(1)}KB</p>
                         <button
                             onClick={removeFile}
-                            className="flex items-center px-2 gap-2 bg-primary/90 text-white mx-auto rounded mt-4">
+                            className="flex cursor-pointer items-center px-2 gap-2 bg-primary/90 text-white mx-auto rounded mt-4">
                             <FiTrash2 size={14} />Remove
                         </button>
                     </div>
