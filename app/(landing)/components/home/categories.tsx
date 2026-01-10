@@ -1,7 +1,6 @@
-import Link from "next/link"
-import Image from "next/image"
+import Link from "next/link";
+import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
-import products from "./products";
 
 const categoryList = [
     {
@@ -28,7 +27,7 @@ const categoryList = [
         name: 'Swimming',
         imgUrl: 'category-swimming.png'
     },
-]
+];
 
 const Categories = () => {
     return (
@@ -60,6 +59,6 @@ const Categories = () => {
             </div>
         </section>
     )
-}
+};
 
 export default Categories;
