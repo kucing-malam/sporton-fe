@@ -33,7 +33,7 @@ const Checkout = () => {
     return (
         <main className="bg-gray-100 min-h-[80vh] pt-10">
             <div className="max-w-5xl mx-auto py-20">
-                <h1 className="font-bold text-5xl text-center mb-11" onClick={handlePayment}>Checkout Now</h1>
+                <h1 className="font-bold text-5xl text-center mb-11">Checkout Now</h1>
                 <div className="grid grid-cols-2 gap-14" >
                     <OrderInformation formData={formData} setFormData={setFormData} />
                     <CartItems handlePayment={handlePayment}/>
