@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <section id="hero-section" className="container mx-auto h-screen flex">
-      <div className="relative self-center">
+    <section id="hero-section" className="container mx-auto h-screen flex pt-10">
+      <div className="relative self-center ">
         <Image src="/images/img-basketball.png" 
           width={432} 
           height={423} 
