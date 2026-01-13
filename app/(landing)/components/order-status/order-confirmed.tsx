@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 
 const OrderConfirmed = () => {
 
     return (
-        <div className="bg-white w-160 p-15.5 flex flex-col justify-center items-center ">
+        <div className="bg-white w-160 p-15.5 flex flex-col justify-center items-center py-20">
             <Image src="/images/icon-order-confirmed.svg" alt="icon order submitted"
                 width={117}
                 height={117}
