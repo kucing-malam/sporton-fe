@@ -6,9 +6,11 @@ import { FiImage, FiTrash2, FiUploadCloud } from "react-icons/fi";
 type TFileUploadProps = {
     onFileSelect?: (file: File | null) => void;
 }
+
 const FileUpload = ({ onFileSelect }: TFileUploadProps) => {
     const [file, setFile] = useState<File | null>(null);
-    const fileInputRef = useRef<HTMLInputElement | null>(null)
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
+
     const handleFileChange = (selectedFile?: File) => {
         if (!selectedFile) return;
 
@@ -44,7 +46,7 @@ const FileUpload = ({ onFileSelect }: TFileUploadProps) => {
                         <p>Upload Your Payment Receipt</p>
                     </div> :
                     <div className="text-center">
-                        <FiImage className="text-primary mx-auto mb-4" size={28}/>
+                        <FiImage className="text-primary mx-auto mb-4" size={28} />
                         <p className="text-primary text-sm">{file.name}</p>
                         <p className="text-gray-400 text-sm">{(file.size / 1024).toFixed(1)}KB</p>
                         <button
