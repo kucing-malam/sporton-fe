@@ -1,35 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
+import { Category } from "@/app/types";
+import { getImageUrl } from "@/app/lib/api";
 
-const categoryList = [
-    {
-        name: 'Running',
-        imgUrl: 'category-running.png'
-    },
-    {
-        name: 'Tennis',
-        imgUrl: 'category-tennis.png'
-    },
-    {
-        name: 'Basketball',
-        imgUrl: 'category-basketball.png'
-    },
-    {
-        name: 'Football',
-        imgUrl: 'category-football.png'
-    },
-    {
-        name: 'Badminton',
-        imgUrl: 'category-badminton.png'
-    },
-    {
-        name: 'Swimming',
-        imgUrl: 'category-swimming.png'
-    },
-];
+type TCategoriesProps = {
+    categories: Category[]
+}
 
-const Categories = () => {
+const CategoriesSection = ({categories}: TCategoriesProps) => {
     return (
         <section id="categories-section" className="container mx-auto pb-20">
             <div className="flex justify-between items-center mb-8">
@@ -40,12 +19,12 @@ const Categories = () => {
                 </Link>
             </div>
             <div className="grid grid-cols-6 gap-12">
-                {categoryList.map((category, index) =>
+                {categories.map((category) =>
                 (
-                    <div key={index} className="rounded-lg bg-gradient-to-r from-[#F1F1F1] to-[#F7F7F7] w-full aspect-square flex justify-center">
+                    <div key={category._id} className="rounded-lg bg-gradient-to-r from-[#F1F1F1] to-[#F7F7F7] w-full aspect-square flex justify-center">
                         <div className="self-center">
                             <Image
-                                src={`/images/categories/${category.imgUrl}`}
+                                src={getImageUrl(category.imageUrl)}
                                 width={86}
                                 height={86}
                                 alt={category.name} 
@@ -61,4 +40,4 @@ const Categories = () => {
     )
 };
 
-export default Categories;
+export default CategoriesSection;
