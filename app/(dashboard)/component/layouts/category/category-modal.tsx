@@ -1,5 +1,5 @@
 import Button from "@/app/(landing)/components/ui/button";
-import Modal from "../../ui/modal"
+import Modal from "../../ui/modal";
 import ImageUploadPreview from "../../ui/image-upload-preview";
 import { useState } from "react";
 
