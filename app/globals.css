@@ -36,3 +36,15 @@ html{
 .input-group input{
   @apply px-4 py-2.5 bg-gray-100 w-full focus:border focus:border-gray-400 outline-none text-sm;
 }
+
+/* INPUT GROUP ADMIN */
+
+.input-group-admin label{
+  @apply mb-1 text-xs block font-bold;
+}
+
+.input-group-admin textarea,
+.input-group-admin select,
+.input-group-admin input{
+  @apply px-4 py-3 w-full border border-[#DBDBDB] focus:border-gray-400 outline-none text-sm;
+}
