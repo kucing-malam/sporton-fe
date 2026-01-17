@@ -1,16 +1,13 @@
 import Button from "@/app/(landing)/components/ui/button";
-import Modal from "../../ui/modal"
-import ImageUploadPreview from "../../ui/image-upload-preview";
+import Modal from "../../ui/modal";
 import { useState } from "react";
 
-type TProductModalProps = {
+type TBankInfoModalProps = {
     isOpen: boolean;
     onClose: () => void;
 };
 
-const ProductModal = ({ isOpen, onClose }: TProductModalProps) => {
-    const [imageFile, setImageFile] = useState<File | null>(null);
-    const [imagePreview, setImagePreview] = useState<string | null>(null);
+const BankInfoModal = ({ isOpen, onClose }: TBankInfoModalProps) => {
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} title="Add Bank Account">
@@ -33,6 +30,6 @@ const ProductModal = ({ isOpen, onClose }: TProductModalProps) => {
             </div>
         </Modal>
     )
-}
+};
 
-export default ProductModal
+export default BankInfoModal;
