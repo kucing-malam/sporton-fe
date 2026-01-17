@@ -1,5 +1,5 @@
 "use client";
-import PriceFormatter from "@/app/utils/price-formatter";
+
 import Image from "next/image";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 
