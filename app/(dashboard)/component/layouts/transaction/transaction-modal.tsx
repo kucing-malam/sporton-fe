@@ -11,8 +11,6 @@ type TTransactionModalProps = {
 };
 
 const TransactionModal = ({ isOpen, onClose }: TTransactionModalProps) => {
-    const [imageFile, setImageFile] = useState<File | null>(null);
-    const [imagePreview, setImagePreview] = useState<string | null>(null);
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} title="Verify Transaction">
