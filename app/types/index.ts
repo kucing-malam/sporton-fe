@@ -1,9 +1,23 @@
+export interface LoginCredential {
+    email: string;
+    password: string;
+}
+
+export interface LoginResponse {
+    token: string;
+    user: {
+        id: string,
+        email: string,
+        name: string
+    };
+}
+
 export interface Category {
     _id: string;
     name: string;
     description: string;
     imageUrl: string;
-    createAt: string;
+    createdAt: string;
     updateAt: string;
 }
 
@@ -12,7 +26,7 @@ export interface Bank {
     bankName: string;
     accountName: string;
     accountNumber: string;
-    createAt: string;
+    createdAt: string;
     updateAt: string;
 }
 
@@ -24,8 +38,8 @@ export interface Product {
     category: Category;
     stock: number;
     price: number;
-    createAt: string;
-    updateAt: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface Transaction {
@@ -33,13 +47,13 @@ export interface Transaction {
     paymentProof: string;
     status: "pending" | "paid" | "reject";
     purchasedItems: {
-        productId: string;
+        productId: Product;
         qty: number;
-    }
+    }[];
     totalPayment: string;
     customerName: string;
     customerContact: number | null;
     customerAddress: string;
-    createAt: string;
-    updateAt: string;
+    createdAt: string;
+    updatedAt: string;
 }
