@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "../globals.css";
 import Sidebar from "./component/layouts/sidebar";
+import AuthGuard from "./component/layouts/auth-guard";
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -25,9 +28,10 @@ export default function RootLayout({
         <Sidebar />
         <main className="flex-1 ml-80 p-14 bg-[#F7F9FA] min-h-screen">
           <div className="mx-w-6xl mx-auto">
-            {children}
+            <AuthGuard>{children}</AuthGuard>
           </div>
         </main>
+        <ToastContainer position="bottom-right"/>
       </body>
     </html>
   );
