@@ -4,13 +4,59 @@ import Button from "@/app/(landing)/components/ui/button";
 import { FiPlus } from "react-icons/fi";
 import BankInfoList from "../../component/layouts/bank-info/bank-info-list";
 import BankInfoModal from "../../component/layouts/bank-info/bank-info-modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Bank } from "@/app/types";
+import { deleteBankOption, getAllBank } from "@/app/services/bank.service";
+import DeleteModal from "../../component/ui/delete-modal";
+import { toast } from "react-toastify";
 
 const BankManagement = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const handleClose = () => {
-        setIsOpen(!isOpen);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [banks, setBanks] = useState<Bank[]>([]);
+    const [selectedBank, setSelectedBank] = useState<Bank | null>(null);
+    const [categoryToDeleteId, setBanksToDeleteId] = useState("");
+
+    const fetchBanks = async () => {
+        try {
+            const data = await getAllBank()
+            setBanks(data)
+        } catch (error) {
+            console.error("failed to fetch Banks")
+        }
     };
+
+    const handleEdit = (Bank: Bank) => {
+        setSelectedBank(Bank);
+        setIsModalOpen(!isModalOpen);
+    };
+
+    const handleDelete = (id: string) => {
+        setBanksToDeleteId(id);
+        setIsDeleteModalOpen(!isDeleteModalOpen)
+    };
+
+    const handleDeleteConfirm = async () => {
+        if (!isDeleteModalOpen) return;
+        try {
+            await deleteBankOption(categoryToDeleteId);
+            fetchBanks();
+            toast.success("Bank deleted successfully")
+        } catch (error) {
+            console.error("failed to delete Bank ", error);
+            toast.error("failed to delete Bank")
+        }
+        setIsDeleteModalOpen(!isDeleteModalOpen);
+    };
+
+    const handleClose = () => {
+        setIsModalOpen(!isModalOpen);
+        setSelectedBank(null);
+    };
+
+    useEffect(() => {
+        fetchBanks();
+    })
 
     return (
         <div>
@@ -28,8 +74,22 @@ const BankManagement = () => {
                     </Button>
                 </div>
             </div>
-            <BankInfoList />
-            <BankInfoModal isOpen={isOpen} onClose={handleClose}/>
+            <BankInfoList
+                banks={banks}
+                onEdit={handleEdit}
+                onDelete={handleDelete} 
+            />
+            <BankInfoModal
+                isOpen={isModalOpen}
+                onClose={handleClose}
+                bank={selectedBank}
+                onSuccess={fetchBanks}
+            />
+            <DeleteModal
+                isOpen={isDeleteModalOpen}
+                onClose={() => setIsDeleteModalOpen(false)}
+                onConfirm={handleDeleteConfirm}
+            />
         </div>
     )
 }
