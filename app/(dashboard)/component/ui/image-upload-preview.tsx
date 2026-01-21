@@ -41,6 +41,7 @@ const ImageUploadPreview = ({ label, value, onChange, className }: TImageUploadP
                                     className="w-full h-full max-w-[199px] max-h-[199px] pt-[1px] object-cover rounded-lg" 
                                     width={190}
                                     height={190}
+                                    unoptimized={true}
                                 />
                             </div>
                         ) :
