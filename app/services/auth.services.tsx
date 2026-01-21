@@ -1,0 +1,22 @@
+import { fetchAPI } from '../lib/api';
+import { LoginCredential, LoginResponse } from '../types/index';
+
+export const login = async (credentials: LoginCredential): Promise<LoginResponse> => {
+    const res = await fetchAPI<LoginResponse>('/auth/signin', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(credentials)
+    });
+    if (res.token) {
+        localStorage.setItem( "token",  res.token)
+        localStorage.setItem( "user",  JSON.stringify(res.user))
+    };
+    return res;
+}
+
+export const logout = async () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+}
