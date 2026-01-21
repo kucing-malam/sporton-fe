@@ -1,36 +1,20 @@
 "use client";
 
+import { Bank } from "@/app/types";
 import { FiCreditCard, FiEdit2, FiTrash2 } from "react-icons/fi";
 
+type TBankInfoListProps = {
+    banks: Bank[];
+    onEdit?: (bank: Bank) => void;
+    onDelete?: (id: string) => void;
+};
 
-const BankInfoList = () => {
-    const bankData = [
-        {
-            bankName: "BCA",
-            accountNumber: "342342",
-            accountName: "PT SportOn Indonesia",
-        },
-        {
-            bankName: "BRI",
-            accountNumber: "342342",
-            accountName: "PT SportOn Indonesia",
-        },
-        {
-            bankName: "BNI",
-            accountNumber: "342342",
-            accountName: "PT SportOn Indonesia",
-        },
-        {
-            bankName: "Mandiri",
-            accountNumber: "342342",
-            accountName: "PT SportOn Indonesia",
-        },
-    ]
+const BankInfoList = ({ banks, onEdit, onDelete }: TBankInfoListProps) => {
     return (
         <div className="grid grid-cols-3 gap-8">
             {
-                bankData.map((bank, index) => (
-                    <div key={index} className="bg-white rounded-lg border border-gray-200">
+                banks?.map((bank) => (
+                    <div key={bank._id} className="bg-white rounded-lg border border-gray-200">
                         <div className="flex gap-2 items-center p-5">
                             <div className="bg-blue-50 text-blue-500 rounded w-12 h-12 flex justify-center items-center">
                                 <FiCreditCard size={24} />
@@ -41,10 +25,10 @@ const BankInfoList = () => {
                             </div>
                             <div className="ml-auto">
                                 <div className="flex gap-2 -mt-5 text-gray-600">
-                                    <button>
+                                    <button onClick={() => onEdit?.(bank)}>
                                         <FiEdit2 className="cursor-pointer" size={20} />
                                     </button>
-                                    <button>
+                                    <button onClick={() => onDelete?.(bank._id)}>
                                         <FiTrash2 className="cursor-pointer" size={20} />
                                     </button>
                                 </div>
